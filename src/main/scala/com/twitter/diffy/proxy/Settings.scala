@@ -11,6 +11,12 @@ case class Settings(
   candidate: Target,
   primary: Target,
   secondary: Target,
+  candidateHeaders: HeaderPairs,
+  primaryHeaders: HeaderPairs,
+  secondaryHeaders: HeaderPairs,
+  candidateApiRoot: String,
+  primaryApiRoot: String,
+  secondaryApiRoot: String,
   protocol: String,
   clientId: String,
   pathToThriftJar: String,
@@ -32,6 +38,8 @@ case class Settings(
   user: String = Try(sys.env("USER")).getOrElse("unknown"))
 
 case class Target(path: String)
+
+case class HeaderPairs(headerPairs: String)
 
 sealed trait ResponseMode { def name: String }
 object ResponseMode {
